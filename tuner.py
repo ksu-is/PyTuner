@@ -71,8 +71,7 @@ stream.start_stream()
 window = 0.5 * (1 - np.cos(np.linspace(0, 2*np.pi, SAMPLES_PER_FFT, False)))
 
 # Print initial text
-print 'sampling at', FSAMP, 'Hz with max resolution of', FREQ_STEP, 'Hz'
-print
+print('Sampling at', FSAMP, 'Hz with max resolution of', FREQ_STEP, 'Hz\n')
 
 # As long as we are getting data:
 while stream.is_active():
@@ -92,8 +91,12 @@ while stream.is_active():
     n0 = int(round(n))
 
     # Console output once we have a full buffer
+    cents = round(1200 * np.log2(freq / number_to_freq(n0)), 2)
+
+    # Console output once we have a full buffer
     num_frames += 1
 
     if num_frames >= FRAMES_PER_FFT:
-        print 'freq: {:7.2f} Hz     note: {:>3s} {:+.2f}'.format(
-            freq, note_name(n0), n-n0)
+        tuning_status = 'In Tune' if abs(cents) < 5 else 'Out of Tune'
+        print(f'Detected Note: {note_name(n0)} ({n0}), Frequency: {freq} Hz, Cents: {cents}, Tuning Status: {tuning_status}')
+        num_frames = 0
