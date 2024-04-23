@@ -1,4 +1,4 @@
 # PyTuner
-PyTuner uses the terminal to allow users to tune their guitar using their device's microphone to recognize the pitch of a note and display how it can be adjusted to the correct pitch.
+PyTuner allow users to tune their guitar using their device's microphone. The system recognizes the pitch of a note and displays the note name, Hz, cents, and whether or not the note is in tune.
 
 Originally forked from https://github.com/mzucker/python-tuner
