@@ -96,6 +96,7 @@ while stream.is_active():
     # Console output once we have a full buffer
     num_frames += 1
 
+    # Print note name and tuning information
     if num_frames >= FRAMES_PER_FFT:
         tuning_status = 'In Tune' if abs(cents) < 5 else 'Out of Tune'
         print(f'Detected Note: {note_name(n0)}, Frequency: {freq:.2f} Hz, Cents: {cents}, Tuning Status: {tuning_status}')
